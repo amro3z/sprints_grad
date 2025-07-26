@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/widgets/custom_bottom.dart' show CustomBottom;
+import 'package:shopping_app/widgets/welcome_pic.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -41,84 +43,28 @@ class WelcomeScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Image.network(
-                    'https://alpinerings.com/cdn/shop/articles/cover.jpg?v=1648040822',
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    fit: BoxFit.cover,
-                  ),
+                WelcomePic(
+                  imageUrl:
+                      'https://alpinerings.com/cdn/shop/articles/cover.jpg?v=1648040822',
                 ),
-                const SizedBox(width: 20),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Image.network(
-                    'https://www.jotform.com/blog/wp-content/uploads/2021/03/1.sectionv2_900x700-700x544.png',
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    fit: BoxFit.cover,
-                  ),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                WelcomePic(
+                  imageUrl:
+                      'https://www.jotform.com/blog/wp-content/uploads/2021/03/1.sectionv2_900x700-700x544.png',
                 ),
               ],
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.purple,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 12,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    elevation: 5,
-                  ),
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(
-                      fontFamily: 'CustomFont',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: () {
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.purple,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 12,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    elevation: 5,
-                  ),
-                  child: const Text(
-                    'Register',
-                    style: TextStyle(
-                      fontFamily: 'CustomFont',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
+                CustomBottom(onPressed: () {}, title: 'Login'),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                CustomBottom(onPressed: () {}, title: 'Sign UP'),
               ],
             ),
           ],
