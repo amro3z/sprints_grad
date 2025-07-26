@@ -48,17 +48,57 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
     }
   }
 
+  String? _validate(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'This field is required';
+    }
+
+    switch (widget.keyboardType) {
+      case CustomTextFieldType.email:
+        if (!value.contains('@')) {
+          return 'Enter a valid email';
+        }
+        break;
+
+      case CustomTextFieldType.name:
+        if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
+          return 'Enter a valid name';
+        }
+        break;
+
+      case CustomTextFieldType.number:
+        if (!RegExp(r'^\d+$').hasMatch(value)) {
+          return 'Enter numbers only';
+        }
+        break;
+
+      case CustomTextFieldType.phone:
+        if (!RegExp(r'^\d{10,}$').hasMatch(value)) {
+          return 'Enter a valid phone number';
+        }
+        break;
+
+      case CustomTextFieldType.password:
+        if (value.length < 6) {
+          return 'Password must be at least 6 characters';
+        }
+        break;
+
+      case CustomTextFieldType.text:
+      if (value.trim().isEmpty) {
+          return 'This field cannot be empty';
+        }
+    }
+
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       keyboardType: _mapKeyboardType(widget.keyboardType),
       obscureText: _obscureText,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'This field is required';
-        }
-        return null;
-      },
+      validator: _validate,
       autovalidateMode: widget.autovalidateMode,
       decoration: InputDecoration(
         suffixIcon: widget.obscureText
