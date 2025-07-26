@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/widgets/custom_bottom.dart';
 
 void showSuccessDialog(BuildContext context) {
   showDialog(
     context: context,
-    barrierDismissible: false, // مايتقفلش بالضغط خارج الـ Dialog
+    barrierDismissible: true, // مايتقفلش بالضغط خارج الـ Dialog
     builder: (context) {
       return Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -37,32 +38,16 @@ void showSuccessDialog(BuildContext context) {
                   const SizedBox(height: 24),
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop(); // يغلق الـ Dialog
-                      },
-                      child: const Text(
-                        'Close',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          fontFamily: 'CustomFont',
-                          color: Colors.white,
-                        ),
-                      ),
+                    child: CustomBottom(
+                      onPressed: () => Navigator.of(context).pop(),
+                      title: 'OK',
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
                     ),
                   ),
                 ],
               ),
             ),
-            // زر الإغلاق (X)
             IconButton(
               icon: const Icon(Icons.close, color: Colors.black54),
               onPressed: () => Navigator.of(context).pop(),
