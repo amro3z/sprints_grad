@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       CustomFormTextField(
                         hintText: 'Email',
                         autovalidateMode: _autovalidateMode,
-                        labelText: 'Email',
+                        labelText: 'Email', keyboardType: CustomTextFieldType.email,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.025,
@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         hintText: 'Password',
                         autovalidateMode: _autovalidateMode,
                         labelText: 'Password',
-                        obscureText: true,
+                        obscureText: true, keyboardType: CustomTextFieldType.password,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.03,

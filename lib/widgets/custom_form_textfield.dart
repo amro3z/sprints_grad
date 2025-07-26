@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
+enum CustomTextFieldType { email, name, password, number, phone, text }
+
 class CustomFormTextField extends StatefulWidget {
   final String labelText;
   final String hintText;
   final AutovalidateMode autovalidateMode;
   final bool obscureText;
+  final CustomTextFieldType keyboardType;
 
   const CustomFormTextField({
     super.key,
     required this.labelText,
     required this.hintText,
     required this.autovalidateMode,
+    required this.keyboardType,
     this.obscureText = false,
   });
 
@@ -24,12 +28,30 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
   @override
   void initState() {
     super.initState();
-    _obscureText = widget.obscureText; 
+    _obscureText = widget.obscureText;
+  }
+
+  TextInputType _mapKeyboardType(CustomTextFieldType type) {
+    switch (type) {
+      case CustomTextFieldType.email:
+        return TextInputType.emailAddress;
+      case CustomTextFieldType.name:
+        return TextInputType.name;
+      case CustomTextFieldType.number:
+        return TextInputType.number;
+      case CustomTextFieldType.phone:
+        return TextInputType.phone;
+      case CustomTextFieldType.password:
+        return TextInputType.visiblePassword;
+      case CustomTextFieldType.text:
+      return TextInputType.text;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: _mapKeyboardType(widget.keyboardType),
       obscureText: _obscureText,
       validator: (value) {
         if (value == null || value.isEmpty) {
