@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shopping_app/widgets/custom_bottom.dart';
 import 'package:shopping_app/widgets/custom_form_textfield.dart';
+import 'package:shopping_app/widgets/login_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -101,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: CustomBottom(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              // Process the login
+                              showSuccessDialog(context);
                             } else {
                               setState(() {
                                 _autovalidateMode = AutovalidateMode.always;
