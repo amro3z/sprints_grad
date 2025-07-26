@@ -62,9 +62,21 @@ class WelcomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomBottom(onPressed: () {}, title: 'Login'),
+                CustomBottom(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
+                  title: 'Login',
+                  foregroundColor: Colors.deepPurpleAccent[700]!,
+                  backgroundColor: Colors.white,
+                ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.05),
-                CustomBottom(onPressed: () {}, title: 'Sign UP'),
+                CustomBottom(
+                  onPressed: () {},
+                  title: 'Sign UP',
+                  foregroundColor: Colors.deepPurpleAccent[700]!,
+                  backgroundColor: Colors.white,
+                ),
               ],
             ),
           ],
