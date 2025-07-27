@@ -72,6 +72,7 @@ class _LoopingCarouselState extends State<LoopingCarousel> {
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.22,
+              width: MediaQuery.of(context).size.width * 0.9,
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: images.length,

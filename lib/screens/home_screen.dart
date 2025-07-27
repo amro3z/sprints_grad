@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/widgets/custom_home_text.dart';
 import 'package:shopping_app/widgets/page_product.dart';
 import 'package:shopping_app/widgets/custom_appbar.dart';
 
@@ -18,21 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             customAppBar(context: context),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Center(
-                child: Text(
-                  "Featured Products",
-                  style: TextStyle(
-                    fontFamily: 'CustomFont',
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ),
+            CustomHomeText(text: "Featured Products"),
             LoopingCarousel(),
+            CustomHomeText(text: "Shop Our Collection"),
           ],
         ),
       ),
