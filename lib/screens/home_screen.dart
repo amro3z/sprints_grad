@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/localization/app_localizations.dart';
 import 'package:shopping_app/widgets/custom_appbar.dart';
 import 'package:shopping_app/widgets/custom_home_text.dart';
 import 'package:shopping_app/widgets/product_card.dart';
 import 'package:shopping_app/widgets/page_product.dart';
-import 'package:shopping_app/widgets/offer_card.dart'; // Import the new OfferCard
+import 'package:shopping_app/widgets/offer_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -54,15 +55,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             customAppBar(context: context),
-            const CustomHomeText(text: "Featured Products"),
+            CustomHomeText(text: local.featuredProducts),
             const LoopingCarousel(),
-            const CustomHomeText(text: "Shop Our Collection"),
+            CustomHomeText(text: local.shopOurCollection),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               child: GridView.builder(
@@ -85,35 +88,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            const CustomHomeText(text: "Hot Offers 🔥"),
+            CustomHomeText(text: local.hotOffers),
             ListView(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               padding: const EdgeInsets.all(12),
-              children: const [
+              children: [
                 OfferCard(
-                  title: "50% Off Electronics",
-                  subtitle: "Limited time offer on all tech gadgets",
+                  title: local.offerTitle1,
+                  subtitle: local.offerSubtitle1,
                   badge: "50% OFF",
                 ),
                 OfferCard(
-                  title: "Free Shipping Weekend",
-                  subtitle: "No delivery charges on orders above \$50",
+                  title: local.offerTitle2,
+                  subtitle: local.offerSubtitle2,
                   badge: "FREE SHIP",
                 ),
                 OfferCard(
-                  title: "Buy 2 Get 1 Free",
-                  subtitle: "On selected accessories and peripherals",
+                  title: local.offerTitle3,
+                  subtitle: local.offerSubtitle3,
                   badge: "B2G1",
                 ),
                 OfferCard(
-                  title: "Student Discount",
-                  subtitle: "Extra 20% off with valid student ID",
+                  title: local.offerTitle4,
+                  subtitle: local.offerSubtitle4,
                   badge: "20% OFF",
                 ),
                 OfferCard(
-                  title: "Bundle Deals",
-                  subtitle: "Save more when you buy complete setups",
+                  title: local.offerTitle5,
+                  subtitle: local.offerSubtitle5,
                   badge: "BUNDLE",
                 ),
               ],

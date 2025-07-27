@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/localization/app_localizations.dart';
 import 'package:shopping_app/widgets/custom_bottom.dart';
 import 'package:shopping_app/widgets/custom_form_textfield.dart';
 import 'package:shopping_app/widgets/massage_dialog.dart';
@@ -16,16 +17,19 @@ class _MyWidgetState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: const Text(
-          'Sign Up',
-          style: TextStyle(
+        title: Text(
+          local.signUp,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
             fontFamily: 'CustomFont',
@@ -58,7 +62,7 @@ class _MyWidgetState extends State<SignUpScreen> {
                   child: Column(
                     children: [
                       Text(
-                        'Create Account',
+                        local.createAccount,
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -69,9 +73,9 @@ class _MyWidgetState extends State<SignUpScreen> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
-                      const Text(
-                        'Join ShopCraft today',
-                        style: TextStyle(
+                      Text(
+                        local.joinToday,
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'CustomFont',
@@ -82,27 +86,27 @@ class _MyWidgetState extends State<SignUpScreen> {
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
                       CustomFormTextField(
-                        hintText: 'Full Name',
+                        hintText: local.fullName,
                         autovalidateMode: _autovalidateMode,
-                        labelText: 'Full Name',
+                        labelText: local.fullName,
                         keyboardType: CustomTextFieldType.text,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.025,
                       ),
                       CustomFormTextField(
-                        hintText: 'Email',
+                        hintText: local.email,
                         autovalidateMode: _autovalidateMode,
-                        labelText: 'Email',
+                        labelText: local.email,
                         keyboardType: CustomTextFieldType.email,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.025,
                       ),
                       CustomFormTextField(
-                        hintText: 'Password',
+                        hintText: local.password,
                         autovalidateMode: _autovalidateMode,
-                        labelText: 'Password',
+                        labelText: local.password,
                         obscureText: true,
                         controller: _passwordController,
                         keyboardType: CustomTextFieldType.password,
@@ -111,9 +115,9 @@ class _MyWidgetState extends State<SignUpScreen> {
                         height: MediaQuery.of(context).size.height * 0.025,
                       ),
                       CustomFormTextField(
-                        hintText: 'Confirm Password',
+                        hintText: local.confirmPassword,
                         autovalidateMode: _autovalidateMode,
-                        labelText: 'Confirm Password',
+                        labelText: local.confirmPassword,
                         controller: _confirmPasswordController,
                         obscureText: true,
                         keyboardType: CustomTextFieldType.password,
@@ -131,9 +135,8 @@ class _MyWidgetState extends State<SignUpScreen> {
                                   _confirmPasswordController.text) {
                                 showCustomDialog(
                                   context: context,
-                                  title: 'Error',
-                                  message:
-                                      'Passwords do not match. Please try again.',
+                                  title: local.error,
+                                  message: local.passwordMismatch,
                                   backgroundColor: Colors.red,
                                   foregroundColor: Colors.white,
                                   titleColor: Colors.red,
@@ -142,8 +145,8 @@ class _MyWidgetState extends State<SignUpScreen> {
                               }
                               showCustomDialog(
                                 context: context,
-                                title: 'Account Created!',
-                                message: 'Account created successfully',
+                                title: local.accountCreated,
+                                message: local.accountCreatedSuccess,
                                 backgroundColor: Colors.green,
                                 foregroundColor: Colors.white,
                                 titleColor: Colors.green,
@@ -160,7 +163,7 @@ class _MyWidgetState extends State<SignUpScreen> {
                               });
                             }
                           },
-                          title: 'Sign Up',
+                          title: local.signUp,
                           foregroundColor: Colors.white,
                           backgroundColor: Colors.deepPurpleAccent[700]!,
                         ),

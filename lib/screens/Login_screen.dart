@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/localization/app_localizations.dart';
 import 'package:shopping_app/widgets/custom_bottom.dart';
 import 'package:shopping_app/widgets/custom_form_textfield.dart';
 import 'package:shopping_app/widgets/massage_dialog.dart';
@@ -13,16 +14,19 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
+
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: const Text(
-          'Login',
-          style: TextStyle(
+        title: Text(
+          local.login,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
             fontFamily: 'CustomFont',
@@ -55,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     children: [
                       Text(
-                        'Welcome Back',
+                        local.welcomeBack,
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -66,9 +70,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
-                      const Text(
-                        'Sign in to ShopCraft',
-                        style: TextStyle(
+                      Text(
+                        local.signInToShopCraft,
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'CustomFont',
@@ -79,18 +83,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
                       CustomFormTextField(
-                        hintText: 'Email',
+                        hintText: local.email,
                         autovalidateMode: _autovalidateMode,
-                        labelText: 'Email',
+                        labelText: local.email,
                         keyboardType: CustomTextFieldType.email,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.025,
                       ),
                       CustomFormTextField(
-                        hintText: 'Password',
+                        hintText: local.password,
                         autovalidateMode: _autovalidateMode,
-                        labelText: 'Password',
+                        labelText: local.password,
                         obscureText: true,
                         keyboardType: CustomTextFieldType.password,
                       ),
@@ -105,8 +109,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (_formKey.currentState!.validate()) {
                               showCustomDialog(
                                 context: context,
-                                title: 'Welcome Back!',
-                                message: 'Account sign-in successfully',
+                                title: local.welcomeBack,
+                                message: local.loginSuccess,
                                 backgroundColor: Colors.green,
                                 foregroundColor: Colors.white,
                                 titleColor: Colors.green,
@@ -123,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               });
                             }
                           },
-                          title: 'Login',
+                          title: local.login,
                           foregroundColor: Colors.white,
                           backgroundColor: Colors.deepPurpleAccent[700]!,
                         ),

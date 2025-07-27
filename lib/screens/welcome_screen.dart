@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/widgets/custom_bottom.dart' show CustomBottom;
+import 'package:shopping_app/localization/app_localizations.dart';
+import 'package:shopping_app/main.dart'; 
+import 'package:shopping_app/widgets/custom_bottom.dart';
 import 'package:shopping_app/widgets/welcome_pic.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
+  void _toggleLocale(BuildContext context) {
+    final currentLocale = Localizations.localeOf(context);
+    final newLocale = currentLocale.languageCode == 'ar'
+        ? const Locale('en')
+        : const Locale('ar');
+    InitWidget.of(context)?.setLocale(newLocale);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -20,6 +32,12 @@ class WelcomeScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.language, color: Colors.white),
+            onPressed: () => _toggleLocale(context),
+          ),
+        ],
       ),
       body: Container(
         width: double.infinity,
@@ -34,9 +52,9 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Your Premium Shopping Experience',
-              style: TextStyle(
+            Text(
+              appLocalizations.welcome,
+              style: const TextStyle(
                 color: Colors.white,
                 fontFamily: 'CustomFont',
                 fontSize: 18,
@@ -66,16 +84,16 @@ class WelcomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/login');
                   },
-                  title: 'Login',
+                  title: appLocalizations.login,
                   foregroundColor: Colors.deepPurpleAccent[700]!,
                   backgroundColor: Colors.white,
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.05),
                 CustomBottom(
                   onPressed: () {
-                     Navigator.pushNamed(context, '/signup');
+                    Navigator.pushNamed(context, '/signup');
                   },
-                  title: 'Sign UP',
+                  title: appLocalizations.signUp,
                   foregroundColor: Colors.deepPurpleAccent[700]!,
                   backgroundColor: Colors.white,
                 ),
