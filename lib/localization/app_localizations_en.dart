@@ -15,7 +15,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hotOffers => 'Hot Offers';
 
   @override
-  String get welcome => 'Welcome';
+  String get yourpremiumshoppingexperience =>
+      'Your Premium Shopping Experience';
 
   @override
   String get addToCart => 'Item added to the cart';
@@ -94,6 +95,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get error => 'Error';
+
+  @override
+  String get ok => 'ok';
+
+  @override
+  String get enterValidEmail => 'Enter a valid email address';
+
+  @override
+  String get enterValidName => 'Enter a valid name';
+
+  @override
+  String get enterNumbersOnly => 'Enter numbers only';
+
+  @override
+  String get enterValidPhone => 'Enter a valid phone number';
+
+  @override
+  String get passwordMinLength => 'Password must be at least 6 characters';
 
   @override
   String get passwordMismatch => 'Passwords do not match. Please try again.';

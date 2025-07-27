@@ -110,11 +110,11 @@ abstract class AppLocalizations {
   /// **'Hot Offers'**
   String get hotOffers;
 
-  /// No description provided for @welcome.
+  /// No description provided for @yourpremiumshoppingexperience.
   ///
   /// In en, this message translates to:
-  /// **'Welcome'**
-  String get welcome;
+  /// **'Your Premium Shopping Experience'**
+  String get yourpremiumshoppingexperience;
 
   /// No description provided for @addToCart.
   ///
@@ -271,6 +271,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error'**
   String get error;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'ok'**
+  String get ok;
+
+  /// No description provided for @enterValidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email address'**
+  String get enterValidEmail;
+
+  /// No description provided for @enterValidName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid name'**
+  String get enterValidName;
+
+  /// No description provided for @enterNumbersOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter numbers only'**
+  String get enterNumbersOnly;
+
+  /// No description provided for @enterValidPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid phone number'**
+  String get enterValidPhone;
+
+  /// No description provided for @passwordMinLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get passwordMinLength;
 
   /// No description provided for @passwordMismatch.
   ///

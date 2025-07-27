@@ -15,7 +15,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hotOffers => ' 🔥العروض الساخنة';
 
   @override
-  String get welcome => 'مرحبًا';
+  String get yourpremiumshoppingexperience => 'تجربة التسوق المتميزة الخاصة بك';
 
   @override
   String get addToCart => 'تمت إضافة العنصر إلى السلة';
@@ -94,6 +94,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get error => 'خطأ';
+
+  @override
+  String get ok => 'حسنا';
+
+  @override
+  String get enterValidEmail => 'أدخل بريدًا إلكترونيًا صحيحًا';
+
+  @override
+  String get enterValidName => 'أدخل اسمًا صحيحًا';
+
+  @override
+  String get enterNumbersOnly => 'أدخل أرقام فقط';
+
+  @override
+  String get enterValidPhone => 'أدخل رقم هاتف صحيح';
+
+  @override
+  String get passwordMinLength =>
+      'يجب أن تتكون كلمة المرور من 6 أحرف على الأقل';
 
   @override
   String get passwordMismatch =>

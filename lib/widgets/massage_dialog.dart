@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/widgets/custom_bottom.dart';
+import 'package:shopping_app/localization/app_localizations.dart';
 
 void showCustomDialog({
   required BuildContext context,
@@ -12,8 +13,9 @@ void showCustomDialog({
 }) {
   showDialog(
     context: context,
-    barrierDismissible: true, 
+    barrierDismissible: true,
     builder: (context) {
+      final localizations = AppLocalizations.of(context)!;
       return Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: Stack(
@@ -48,7 +50,7 @@ void showCustomDialog({
                     width: double.infinity,
                     child: CustomBottom(
                       onPressed: onClose ?? () => Navigator.of(context).pop(),
-                      title: 'OK',
+                      title: localizations.ok, // 🔁 ترجمنا الزر
                       backgroundColor: backgroundColor,
                       foregroundColor: foregroundColor,
                     ),

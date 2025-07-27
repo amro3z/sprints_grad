@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/localization/app_localizations.dart';
 
 enum CustomTextFieldType { email, name, password, number, phone, text }
 
@@ -9,6 +10,7 @@ class CustomFormTextField extends StatefulWidget {
   final bool obscureText;
   final CustomTextFieldType keyboardType;
   final TextEditingController? controller;
+
   const CustomFormTextField({
     super.key,
     required this.labelText,
@@ -50,45 +52,47 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
   }
 
   String? _validate(String? value) {
+    final t = AppLocalizations.of(context)!;
+
     if (value == null || value.isEmpty) {
-      return 'This field is required';
+      return t.error; // "This field is required"
     }
 
     switch (widget.keyboardType) {
       case CustomTextFieldType.email:
         final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
         if (!emailRegex.hasMatch(value)) {
-          return 'Enter a valid email address';
+          return t.enterValidEmail;
         }
         break;
 
       case CustomTextFieldType.name:
         if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
-          return 'Enter a valid name';
+          return t.enterValidName;
         }
         break;
 
       case CustomTextFieldType.number:
         if (!RegExp(r'^\d+$').hasMatch(value)) {
-          return 'Enter numbers only';
+          return t.enterNumbersOnly;
         }
         break;
 
       case CustomTextFieldType.phone:
         if (!RegExp(r'^\d{10,}$').hasMatch(value)) {
-          return 'Enter a valid phone number';
+          return t.enterValidPhone;
         }
         break;
 
       case CustomTextFieldType.password:
         if (value.length < 6) {
-          return 'Password must be at least 6 characters';
+          return t.passwordMinLength;
         }
         break;
 
       case CustomTextFieldType.text:
         if (value.trim().isEmpty) {
-          return 'This field cannot be empty';
+          return t.error;
         }
     }
 
@@ -97,6 +101,8 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+
     return TextFormField(
       keyboardType: _mapKeyboardType(widget.keyboardType),
       controller: widget.controller,

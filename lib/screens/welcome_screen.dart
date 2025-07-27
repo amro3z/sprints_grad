@@ -53,7 +53,7 @@ class WelcomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              appLocalizations.welcome,
+              appLocalizations.yourpremiumshoppingexperience,
               style: const TextStyle(
                 color: Colors.white,
                 fontFamily: 'CustomFont',
@@ -72,7 +72,8 @@ class WelcomeScreen extends StatelessWidget {
                 SizedBox(width: MediaQuery.of(context).size.width * 0.05),
                 WelcomePic(
                   imageUrl:
-                      'https://www.jotform.com/blog/wp-content/uploads/2021/03/1.sectionv2_900x700-700x544.png',
+                    "assets/pics/welcome_pic.png",
+                  isNetworkPic: false,
                 ),
               ],
             ),
