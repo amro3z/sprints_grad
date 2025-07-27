@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/widgets/slider.dart';
+import 'package:shopping_app/widgets/page_product.dart';
 import 'package:shopping_app/widgets/custom_appbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            ProductCarousel(),
+            LoopingCarousel(),
           ],
         ),
       ),
