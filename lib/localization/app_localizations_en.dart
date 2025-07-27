@@ -12,7 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ourProducts => 'Our Products';
 
   @override
-  String get hotOffers => 'Hot Offers';
+  String get hotOffers => 'Hot Offers 🔥';
 
   @override
   String get yourpremiumshoppingexperience =>

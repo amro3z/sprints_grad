@@ -107,7 +107,7 @@ abstract class AppLocalizations {
   /// No description provided for @hotOffers.
   ///
   /// In en, this message translates to:
-  /// **'Hot Offers'**
+  /// **'Hot Offers 🔥'**
   String get hotOffers;
 
   /// No description provided for @yourpremiumshoppingexperience.

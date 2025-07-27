@@ -44,6 +44,7 @@ class ProductCard extends StatelessWidget {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         showCloseIcon: true,
+                        closeIconColor: Colors.black87,
                         backgroundColor: Colors.white,
                         content: Column(
                           mainAxisSize: MainAxisSize.min,
