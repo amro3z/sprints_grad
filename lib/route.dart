@@ -6,17 +6,31 @@ import 'package:shopping_app/screens/welcome_screen.dart';
 
 class AppRoute {
   Route generateRoute(RouteSettings settings) {
+    Widget screen;
+
     switch (settings.name) {
       case "/welcome":
-        return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+        screen = const WelcomeScreen();
+        break;
       case "/login":
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        screen = const LoginScreen();
+        break;
       case "/signup":
-        return MaterialPageRoute(builder: (_) => const SignUpScreen());
+        screen = const SignUpScreen();
+        break;
       case "/home":
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        screen = const HomeScreen();
+        break;
       default:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        screen = const WelcomeScreen();
+        break;
     }
+
+    return PageRouteBuilder(
+      pageBuilder: (_, __, ___) => screen,
+      transitionsBuilder: (_, animation, __, child) =>
+          FadeTransition(opacity: animation, child: child),
+      transitionDuration: const Duration(milliseconds: 500),
+    );
   }
 }
