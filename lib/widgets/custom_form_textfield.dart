@@ -101,7 +101,6 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final t = AppLocalizations.of(context)!;
 
     return TextFormField(
       keyboardType: _mapKeyboardType(widget.keyboardType),
