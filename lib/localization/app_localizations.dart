@@ -289,6 +289,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Account created successfully'**
   String get accountCreatedSuccess;
+
+  /// No description provided for @itemAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Item added to the cart'**
+  String get itemAdded;
+
+  /// Message when an item is added to the cart
+  ///
+  /// In en, this message translates to:
+  /// **'{productName} has been added to your cart'**
+  String addedToCart(Object productName);
 }
 
 class _AppLocalizationsDelegate

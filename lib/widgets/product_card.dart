@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/localization/app_localizations.dart';
 
 class ProductCard extends StatelessWidget {
   final String title;
@@ -14,6 +15,8 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return Material(
       borderRadius: BorderRadius.circular(12),
       elevation: 4,
@@ -43,12 +46,13 @@ class ProductCard extends StatelessWidget {
                         showCloseIcon: true,
                         backgroundColor: Colors.white,
                         content: Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                "Item added to the cart",
-                                style: TextStyle(
+                                local.itemAdded,
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -59,8 +63,8 @@ class ProductCard extends StatelessWidget {
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                "$title has been added to your cart",
-                                style: TextStyle(
+                                local.addedToCart(title),
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,
                                   fontFamily: 'CustomFont',
@@ -69,14 +73,14 @@ class ProductCard extends StatelessWidget {
                             ),
                           ],
                         ),
-                        duration: Duration(seconds: 2),
+                        duration: const Duration(seconds: 2),
                       ),
                     );
                   },
-                  child: CircleAvatar(
+                  child: const CircleAvatar(
                     radius: 16,
                     backgroundColor: Colors.deepPurple,
-                    child: const Icon(
+                    child: Icon(
                       Icons.shopping_cart_outlined,
                       color: Colors.white,
                       size: 18,

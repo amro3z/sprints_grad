@@ -104,4 +104,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get accountCreatedSuccess => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get itemAdded => 'تمت إضافة المنتج إلى السلة';
+
+  @override
+  String addedToCart(Object productName) {
+    return 'تمت إضافة $productName إلى سلة التسوق الخاصة بك';
+  }
 }

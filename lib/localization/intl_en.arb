@@ -35,5 +35,13 @@
 "passwordMismatch": "Passwords do not match. Please try again.",
 "accountCreated": "Account Created!",
 "accountCreatedSuccess": "Account created successfully",
-"ourProducts": "Our Products"
+"ourProducts": "Our Products",
+"itemAdded": "Item added to the cart",
+"addedToCart": "{productName} has been added to your cart",
+"@addedToCart": {
+  "description": "Message when an item is added to the cart",
+  "placeholders": {
+    "productName": {}
+  }
+}
 }

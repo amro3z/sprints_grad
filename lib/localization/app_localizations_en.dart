@@ -103,4 +103,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountCreatedSuccess => 'Account created successfully';
+
+  @override
+  String get itemAdded => 'Item added to the cart';
+
+  @override
+  String addedToCart(Object productName) {
+    return '$productName has been added to your cart';
+  }
 }
