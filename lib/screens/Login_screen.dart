@@ -111,6 +111,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 backgroundColor: Colors.green,
                                 foregroundColor: Colors.white,
                                 titleColor: Colors.green,
+                                onClose: () {
+                                  Navigator.pushReplacementNamed(
+                                    context,
+                                    '/home',
+                                  );
+                                },
                               );
                             } else {
                               setState(() {

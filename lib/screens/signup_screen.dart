@@ -147,6 +147,12 @@ class _MyWidgetState extends State<SignUpScreen> {
                                 backgroundColor: Colors.green,
                                 foregroundColor: Colors.white,
                                 titleColor: Colors.green,
+                                onClose: () {
+                                  Navigator.pushReplacementNamed(
+                                    context,
+                                    '/home',
+                                  );
+                                },
                               );
                             } else {
                               setState(() {

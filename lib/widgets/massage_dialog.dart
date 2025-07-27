@@ -8,6 +8,7 @@ void showCustomDialog({
   required Color backgroundColor,
   required Color foregroundColor,
   required Color titleColor,
+  void Function()? onClose,
 }) {
   showDialog(
     context: context,
@@ -46,7 +47,7 @@ void showCustomDialog({
                   SizedBox(
                     width: double.infinity,
                     child: CustomBottom(
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: onClose ?? () => Navigator.of(context).pop(),
                       title: 'OK',
                       backgroundColor: backgroundColor,
                       foregroundColor: foregroundColor,
