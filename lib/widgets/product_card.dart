@@ -39,14 +39,35 @@ class ProductCard extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
+                      SnackBar(
+                        showCloseIcon: true,
                         backgroundColor: Colors.white,
-                        content: Text(
-                          "Item added to the cart",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'CustomFont',
-                          ),
+                        content: Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "Item added to the cart",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'CustomFont',
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "$title has been added to your cart",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'CustomFont',
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         duration: Duration(seconds: 2),
                       ),
@@ -83,6 +104,7 @@ class ProductCard extends StatelessWidget {
               price,
               style: const TextStyle(
                 fontSize: 16,
+                fontFamily: 'CustomFont',
                 color: Colors.deepPurple,
                 fontWeight: FontWeight.bold,
               ),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/widgets/custom_home_text.dart';
-import 'package:shopping_app/widgets/page_product.dart';
 import 'package:shopping_app/widgets/custom_appbar.dart';
+import 'package:shopping_app/widgets/custom_home_text.dart';
 import 'package:shopping_app/widgets/product_card.dart';
+import 'package:shopping_app/widgets/page_product.dart';
+import 'package:shopping_app/widgets/offer_card.dart'; // Import the new OfferCard
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -62,7 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
             const CustomHomeText(text: "Featured Products"),
             const LoopingCarousel(),
             const CustomHomeText(text: "Shop Our Collection"),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               child: GridView.builder(
@@ -85,7 +85,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            
+            const CustomHomeText(text: "Hot Offers 🔥"),
+            ListView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.all(12),
+              children: const [
+                OfferCard(
+                  title: "50% Off Electronics",
+                  subtitle: "Limited time offer on all tech gadgets",
+                  badge: "50% OFF",
+                ),
+                OfferCard(
+                  title: "Free Shipping Weekend",
+                  subtitle: "No delivery charges on orders above \$50",
+                  badge: "FREE SHIP",
+                ),
+                OfferCard(
+                  title: "Buy 2 Get 1 Free",
+                  subtitle: "On selected accessories and peripherals",
+                  badge: "B2G1",
+                ),
+                OfferCard(
+                  title: "Student Discount",
+                  subtitle: "Extra 20% off with valid student ID",
+                  badge: "20% OFF",
+                ),
+                OfferCard(
+                  title: "Bundle Deals",
+                  subtitle: "Save more when you buy complete setups",
+                  badge: "BUNDLE",
+                ),
+              ],
+            ),
           ],
         ),
       ),
