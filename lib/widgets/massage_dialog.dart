@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/widgets/custom_bottom.dart';
 
-void showSuccessDialog(BuildContext context) {
+void showCustomDialog({
+  required BuildContext context,
+  required String title,
+  required String message,
+  required Color backgroundColor,
+  required Color foregroundColor,
+  required Color titleColor,
+}) {
   showDialog(
     context: context,
-    barrierDismissible: true, // مايتقفلش بالضغط خارج الـ Dialog
+    barrierDismissible: true, 
     builder: (context) {
       return Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -16,18 +23,18 @@ void showSuccessDialog(BuildContext context) {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
-                    'Welcome!',
+                  Text(
+                    title,
                     style: TextStyle(
-                      color: Colors.green,
+                      color: titleColor,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'CustomFont',
                     ),
                   ),
                   const SizedBox(height: 12),
-                  const Text(
-                    'Account sign-in successfully',
+                  Text(
+                    message,
                     style: TextStyle(
                       fontSize: 16,
                       fontFamily: 'CustomFont',
@@ -41,8 +48,8 @@ void showSuccessDialog(BuildContext context) {
                     child: CustomBottom(
                       onPressed: () => Navigator.of(context).pop(),
                       title: 'OK',
-                      backgroundColor: Colors.green,
-                      foregroundColor: Colors.white,
+                      backgroundColor: backgroundColor,
+                      foregroundColor: foregroundColor,
                     ),
                   ),
                 ],

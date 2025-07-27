@@ -72,7 +72,9 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.05),
                 CustomBottom(
-                  onPressed: () {},
+                  onPressed: () {
+                     Navigator.pushNamed(context, '/signup');
+                  },
                   title: 'Sign UP',
                   foregroundColor: Colors.deepPurpleAccent[700]!,
                   backgroundColor: Colors.white,

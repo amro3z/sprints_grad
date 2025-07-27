@@ -8,7 +8,7 @@ class CustomFormTextField extends StatefulWidget {
   final AutovalidateMode autovalidateMode;
   final bool obscureText;
   final CustomTextFieldType keyboardType;
-
+  final TextEditingController? controller;
   const CustomFormTextField({
     super.key,
     required this.labelText,
@@ -16,6 +16,7 @@ class CustomFormTextField extends StatefulWidget {
     required this.autovalidateMode,
     required this.keyboardType,
     this.obscureText = false,
+    this.controller,
   });
 
   @override
@@ -44,7 +45,7 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
       case CustomTextFieldType.password:
         return TextInputType.visiblePassword;
       case CustomTextFieldType.text:
-      return TextInputType.text;
+        return TextInputType.text;
     }
   }
 
@@ -55,8 +56,9 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
 
     switch (widget.keyboardType) {
       case CustomTextFieldType.email:
-        if (!value.contains('@')) {
-          return 'Enter a valid email';
+        final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+        if (!emailRegex.hasMatch(value)) {
+          return 'Enter a valid email address';
         }
         break;
 
@@ -85,7 +87,7 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
         break;
 
       case CustomTextFieldType.text:
-      if (value.trim().isEmpty) {
+        if (value.trim().isEmpty) {
           return 'This field cannot be empty';
         }
     }
@@ -97,6 +99,7 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       keyboardType: _mapKeyboardType(widget.keyboardType),
+      controller: widget.controller,
       obscureText: _obscureText,
       validator: _validate,
       autovalidateMode: widget.autovalidateMode,

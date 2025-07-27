@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:shopping_app/widgets/custom_bottom.dart';
 import 'package:shopping_app/widgets/custom_form_textfield.dart';
 import 'package:shopping_app/widgets/massage_dialog.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _MyWidgetState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _MyWidgetState extends State<SignUpScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: const Text(
-          'Login',
+          'Sign Up',
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -50,13 +52,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: MediaQuery.of(context).size.width * 0.9,
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.8),
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
                     children: [
                       Text(
-                        'Welcome Back',
+                        'Create Account',
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -68,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
                       const Text(
-                        'Sign in to ShopCraft',
+                        'Join ShopCraft today',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -78,6 +80,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      CustomFormTextField(
+                        hintText: 'Full Name',
+                        autovalidateMode: _autovalidateMode,
+                        labelText: 'Full Name',
+                        keyboardType: CustomTextFieldType.text,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.025,
                       ),
                       CustomFormTextField(
                         hintText: 'Email',
@@ -93,6 +104,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         autovalidateMode: _autovalidateMode,
                         labelText: 'Password',
                         obscureText: true,
+                        controller: _passwordController,
+                        keyboardType: CustomTextFieldType.password,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.025,
+                      ),
+                      CustomFormTextField(
+                        hintText: 'Confirm Password',
+                        autovalidateMode: _autovalidateMode,
+                        labelText: 'Confirm Password',
+                        controller: _confirmPasswordController,
+                        obscureText: true,
                         keyboardType: CustomTextFieldType.password,
                       ),
                       SizedBox(
@@ -104,10 +127,23 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: CustomBottom(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
+                              if (_passwordController.text !=
+                                  _confirmPasswordController.text) {
+                                showCustomDialog(
+                                  context: context,
+                                  title: 'Error',
+                                  message:
+                                      'Passwords do not match. Please try again.',
+                                  backgroundColor: Colors.red,
+                                  foregroundColor: Colors.white,
+                                  titleColor: Colors.red,
+                                );
+                                return;
+                              }
                               showCustomDialog(
                                 context: context,
-                                title: 'Welcome Back!',
-                                message: 'Account sign-in successfully',
+                                title: 'Account Created!',
+                                message: 'Account created successfully',
                                 backgroundColor: Colors.green,
                                 foregroundColor: Colors.white,
                                 titleColor: Colors.green,
@@ -118,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               });
                             }
                           },
-                          title: 'Login',
+                          title: 'Sign Up',
                           foregroundColor: Colors.white,
                           backgroundColor: Colors.deepPurpleAccent[700]!,
                         ),
